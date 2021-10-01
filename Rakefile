@@ -1,8 +1,9 @@
-# frozen_string_literal: true
+require "./config/envrionment"
+require "sinatra/activerecord/rake"
 
-require "bundler/gem_tasks"
-require "rubocop/rake_task"
+# # frozen_string_literal: true
 
-RuboCop::RakeTask.new
+# require "bundler/gem_tasks"
+# require "rubocop/rake_task"
 
-task default: :rubocop
+
