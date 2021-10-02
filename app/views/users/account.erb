@@ -2,5 +2,10 @@
 
 <p>Here is your run log<a href="/logs"></a></p>
 
+if logged_in? %>
+        <p>Welcome, <%=current_user.username%></p>
+        <a href="/logs/new">Create a New Run Log</a>
+        <a href="/logout"> Log Out </a>
+
 
 <p><a href="/logout">Log Out</a></p>

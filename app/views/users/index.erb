@@ -1,13 +1,5 @@
 <h1>Welcome to the Run Log</h1>
-<p>Please Singup or Login</p>
-
-<nav>
-    <% if logged_in? %>
-        <p>Welcome, <%=current_user.username%></p>
-        <a href="/logs/new">Create a New Run Log</a>
-        <a href="/logout"> Log Out </a>
-    <% else %>
-        <a href="/signup">Sign Up </a>
-         <a href="/login">Log In </a>
-    <% end %>
-</nav>
+<p> Please <a href="/signup">Sign Up </a> or <a href="/login">Log In </a></p>
+       
+       
+  
