@@ -6,8 +6,7 @@ class LogsController < ApplicationController
             redirect to '/login'
        end 
     end 
-       
-
+    
     #new log 
     get '/logs/new' do 
         if logged_in?
