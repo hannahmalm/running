@@ -1,13 +1,14 @@
-class LogsController < Sinatra::Base 
-
-    #get all user logs
-    get '/logs' do 
-        if logged_in?
-            @logs = Log.all
-            erb :'/log/log'
-        else 
-            redirect to '/login'
-        end 
+class LogsController < ApplicationController
+    get "/logs" do 
+       
+       erb :'/log/log'
+       
+    # if logged_in?
+    #         @logs = Log.all
+    #         erb :'/log/log'
+    #     else 
+    #         redirect to '/login'
+    #     end 
     end 
 
     #new log 
@@ -57,7 +58,7 @@ class LogsController < Sinatra::Base
     # end 
 
     patch '/logs/:id' do 
-        if logged_in
+        if logged_in?
             @log = Log.find_by_id(params[:id])
             @log.date = params[:date]
             @log.distance = params[:distance]
@@ -74,7 +75,7 @@ class LogsController < Sinatra::Base
 
     #delete a log 
     delete '/logs/:id' do 
-        if logged_in
+        if logged_in?
             @log = Log.find_by_id(params[:id])
             @log.delete 
             redirect to '/logs'
@@ -84,7 +85,7 @@ class LogsController < Sinatra::Base
     end 
 
     helpers do 
-        def logged_in
+        def logged_in?
             !!session[:user_id]
         end 
 

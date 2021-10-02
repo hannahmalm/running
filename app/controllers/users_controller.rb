@@ -13,10 +13,10 @@ class UsersController < ApplicationController
         end 
     end 
 
-    get '/logs' do 
-        @user = User.find(session[:user_id])
-        erb :'/log/log'
-    end 
+    # get '/logs' do 
+    #     @user = User.find(session[:user_id])
+    #     erb :'/log/log'
+    # end 
 
     get "/login" do 
         # if logged_in?
