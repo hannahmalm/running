@@ -42,6 +42,13 @@ class LogController < Sinatra::Base
         @log.save 
         redirect to "/log/#{@log.id}"
     end 
+
+    #delete a log 
+    delete '/logs/:id' do 
+        @log = Log.find_by_id(params[:id])
+        @log.delete 
+        redirect to '/logs'
+    end 
         
 
 end 
