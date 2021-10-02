@@ -1,0 +1,16 @@
+<form method="POST" action="/logs">
+
+    <label for="distance">Distance</label>
+    <input type="text" id="distance" name="distance" />
+
+    <label for="pace">Pace</label>
+    <input type="text" id="pace" name="pace" /> 
+
+    <label for="avg_heart_rate">Average Heart Rate</label>
+    <input type="text" id="avg_heart_rate" name="avg_heart_rate" />
+
+    <label for="notes">Notes</label>
+    <input type="text" id="notes" name="notes" value="<%=@log.notes%>" />
+
+    <input type="subimt" value="submit" />
+</form>
