@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-     
+
    get "/signup" do 
         erb :'/users/signup'
     end 
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
     end 
 
     get "/failure" do 
-        erb :'/users/failure'
+        erb :'/failure'
     end 
 
     get "/logout" do 
