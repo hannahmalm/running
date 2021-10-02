@@ -1,0 +1,12 @@
+<ul>
+    <% @logs.each do |log| %>
+    <li>
+    <a href="/logs/<%= @log.id %>"></a>
+    Log Date: <%=@log.date%>
+    Distance: <%=@log.distance%>
+    Pace: <%=@log.pace%>
+    Average Heart Rate: <%=@log.avg_heart_rate%>
+    Notes: <%=@log.notes %>
+    </li>
+    <% end %>
+</ul>

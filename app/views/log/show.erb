@@ -1,10 +1,18 @@
-Log Date: <%= @log.date %>
-Distance: <%=log.distance %>
-Pace: <%=log.pace %>
-Average Heart Rate:<%=log.avg_heart_rate %>
-Notes:<%=log.notes %>
+
+Log Date: <%=@log.date %>
+<br>
+Distance: <%=@log.distance %>
+<br>
+Pace: <%=@log.pace %>
+<br>
+Average Heart Rate:<%=@log.avg_heart_rate %>
+<br>
+Notes:<%=@log.notes %>
+<br>
+<br>
 
 <form method="POST" action="/logs/<%=@log.id%>">
     <input type="hidden" name="_method" value="DELETE"/>
-    <input type="submit" value="delete" />
+    <input type="submit" value="Delete" />
 </form>
+
