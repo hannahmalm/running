@@ -77,7 +77,7 @@ class ApplicationController < Sinatra::Base
         erb :'/log/log'
     end 
 
-    new log 
+    #new log 
     get '/logs/new' do 
         erb :'/log/new'
     end 
