@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 1) do
+ActiveRecord::Schema.define(version: 2) do
+
+  create_table "logs", force: :cascade do |t|
+    t.date "date"
+    t.string "distance"
+    t.string "pace"
+    t.string "avg_heart_rate"
+    t.string "notes"
+    t.integer "owner_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
