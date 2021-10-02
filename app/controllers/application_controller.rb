@@ -1,6 +1,4 @@
 require "./config/envrionment"
-#require "./app/models/user"
-#require "./app/models/log"
 class ApplicationController < Sinatra::Base 
 
     configure do 
