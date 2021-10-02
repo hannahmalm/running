@@ -1,8 +1,8 @@
 class LogsController < Sinatra::Base 
 
     #get all user logs
-    get "/logs" do 
-        if logged_in
+    get '/logs' do 
+        if logged_in?
             @logs = Log.all
             erb :'/log/log'
         else 
@@ -12,7 +12,7 @@ class LogsController < Sinatra::Base
 
     #new log 
     get '/logs/new' do 
-        if logged_in
+        if logged_in?
             erb :'/log/new'
         else 
             redirect to '/login'
@@ -20,9 +20,13 @@ class LogsController < Sinatra::Base
     end 
 
     post '/logs' do 
-        if logged_in
+        if logged_in?
             @log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :owner_id => params[:owner_id])
-            redirect to "/logs/#{@log.id}"
+            if @log.save
+                redirect to "/logs/#{@log.id}"
+            else
+                redirect to "/logs/new"
+            end
         else
             redirect to '/login'
         end 
@@ -30,7 +34,7 @@ class LogsController < Sinatra::Base
     
     #show log 
     get '/logs/:id' do 
-        if logged_in
+        if logged_in?
             @log = Log.find_by_id(params[:id])
             erb :'/log/show'
         else 
@@ -39,14 +43,18 @@ class LogsController < Sinatra::Base
     end 
 
     #edit log 
-    get '/logs/:id/edit' do 
-        if logged_in
-            @log = Log.find_by_id(params[:id])
-            erb :'/log/edit'
-        else 
-            redirect to '/login'
-        end 
-    end 
+    # get '/logs/:id/edit' do 
+    #     if logged_in?
+    #         @log = Log.find_by_id(params[:id])
+    #         if @log && @log.user == current_user
+    #             erb :'/log/edit'
+    #         else 
+    #             redirect to '/logs'
+    #         end 
+    #     else 
+    #         redirect to '/login'
+    #     end 
+    # end 
 
     patch '/logs/:id' do 
         if logged_in
