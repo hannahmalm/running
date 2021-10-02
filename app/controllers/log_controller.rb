@@ -6,12 +6,12 @@ class LogController < Sinatra::Base
     #get all user logs
     get "/logs" do 
         @logs = Log.all
-        erb :log 
+        erb :'/log/log'
     end 
 
     #new log 
     get '/logs/new' do 
-        erb :new 
+        erb :'/log/new'
     end 
 
     post '/logs' do 
@@ -22,13 +22,13 @@ class LogController < Sinatra::Base
     #show log 
     get '/logs/:id' do 
         @log = Log.find_by_id(params[:id])
-        erb :show 
+        erb :'/log/show'
     end 
 
     #edit log 
     get '/logs/:id/edit' do 
         @log = Log.find_by_id(params[:id])
-        erb :edit 
+        erb :'/log/edit'
     end 
 
     patch '/logs/:id' do 

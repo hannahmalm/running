@@ -11,11 +11,11 @@ class ApplicationController < Sinatra::Base
     end 
 
     get "/" do 
-        erb :index 
+        erb :'/users/index'
     end 
 
     get "/signup" do 
-        erb :signup
+        erb :'/users/signup'
     end 
 
     post "/signup" do 
@@ -29,11 +29,11 @@ class ApplicationController < Sinatra::Base
 
     get '/account' do 
         @user = User.find(session[:user_id])
-        erb :account 
+        erb :'/users/account'
     end 
 
     get "/login" do 
-        erb :login 
+        erb :'/users/login'
     end 
 
     post "/login" do 
@@ -47,7 +47,7 @@ class ApplicationController < Sinatra::Base
     end 
 
     get "/failure" do 
-        erb :failure 
+        erb :'/users/failure'
     end 
 
     get "/logout" do 
