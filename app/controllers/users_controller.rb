@@ -9,24 +9,28 @@ class UsersController < ApplicationController
             redirect '/failure'
         else 
             User.create(username: params[:username], password: params[:password])
-            redirect '/login'
+            redirect '/logs'
         end 
     end 
 
-    get '/account' do 
-        @user = User.find(session[:user_id])
-        erb :'/users/account'
-    end 
+    # get '/account' do 
+    #     @user = User.find(session[:user_id])
+    #     erb :'/users/account'
+    # end 
 
     get "/login" do 
-        erb :'/users/login'
+        if !logged_in?
+            erb :'/users/login'
+        else 
+            redirect to '/logs'
+        end 
     end 
 
     post "/login" do 
-        @user = User.find_by(username: params[:username])
-        if @user && @user.authenticate(params[:password])
+        user = User.find_by(username: params[:username])
+        if user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
-            redirect to "/account"
+            redirect to "/logs"
         else 
             redirect to "/failure"
         end 
@@ -37,8 +41,11 @@ class UsersController < ApplicationController
     end 
 
     get "/logout" do 
-        session.clear 
-        redirect "/"
-    end 
-
+        if logged_in?
+            session.clear 
+            redirect "/login"
+        else 
+            redirect "/"
+        end 
+    end
 end 
