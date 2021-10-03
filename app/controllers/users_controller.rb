@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
 
+    #slugs create a more useful name
+    #find_by_slug method should use the slug method to retrieve a name from a database
+    get '/users/:slug' do 
+        @user = User.find_by_slug(params[:slug])
+        erb :'/users/account'
+
+
    get "/signup" do 
         erb :'/users/signup'
     end 
