@@ -1,5 +1,5 @@
 class LogsController < ApplicationController
-    get "/logs" do 
+    get "/logs" do #DONE
        if logged_in?
             erb :'/log/log'
        else 
@@ -8,7 +8,7 @@ class LogsController < ApplicationController
     end 
     
     #new log 
-    get '/logs/new' do 
+    get '/logs/new' do #DONE
         if logged_in?
             erb :'/log/new'
         else 
@@ -16,7 +16,7 @@ class LogsController < ApplicationController
         end 
     end 
 
-    post '/logs' do 
+    post '/logs' do #DONE
         if logged_in?
             @log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :owner_id => params[:owner_id])
             if @log.save
@@ -30,7 +30,7 @@ class LogsController < ApplicationController
     end 
     
     #show log 
-    get '/logs/:id' do 
+    get '/logs/:id' do #DONE
         if logged_in?
             @log = Log.find_by_id(params[:id])
             erb :'/log/show'
@@ -39,19 +39,28 @@ class LogsController < ApplicationController
         end 
     end 
 
-    #edit log 
-    # get '/logs/:id/edit' do 
+    #  #show log 
+    #  get '/logs/show' do 
     #     if logged_in?
-    #         @log = Log.find_by_id(params[:id])
-    #         if @log && @log.user == current_user
-    #             erb :'/log/edit'
-    #         else 
-    #             redirect to '/logs'
-    #         end 
+    #         erb :'/log/show'
     #     else 
     #         redirect to '/login'
     #     end 
     # end 
+
+    #edit log 
+    get '/logs/:id/edit' do 
+        if logged_in?
+             @log = Log.find_by_id(params[:id])
+            if @log && @log.user == current_user
+                erb :'/log/edit'
+             else 
+                redirect to '/logs'
+             end 
+        else 
+            redirect to '/login'
+        end 
+    end 
 
     patch '/logs/:id' do 
         if logged_in?
