@@ -8,11 +8,11 @@ class UsersController < ApplicationController
     end 
 
 
-   get "/signup" do 
+   get "/signup" do #DONE
         erb :'/users/signup'
     end 
 
-    post "/signup" do 
+    post "/signup" do #DONE
         if params[:username] == "" || params[:password] == ""
             redirect '/failure'
         else 
@@ -21,11 +21,11 @@ class UsersController < ApplicationController
         end 
     end 
 
-    get "/login" do 
+    get "/login" do #DONE
          erb :'/users/login' 
     end 
 
-    post "/login" do 
+    post "/login" do #DONE
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
             session[:user_id] = @user.id
@@ -35,11 +35,11 @@ class UsersController < ApplicationController
         end 
     end 
 
-    get "/failure" do 
+    get "/failure" do #DONE
         erb :'/failure'
     end 
 
-    get "/logout" do 
+    get "/logout" do #DONE
         if logged_in
             session.clear
             redirect "/login"
