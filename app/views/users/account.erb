@@ -1,14 +1,17 @@
+<p>Welcome, <%= current_user.username %>
+<br>
 
-<p>Welcome, <%= @user.username %>
 <% @user.logs.each do |log| %>
     <div>
         <%= log.date %>
     <div>
 <%end%>
 
+<a href="/logs/new">Create a New Run Log</a>
+<br>
+<br>
+<p><a href="/logout">Log Out</a></p>
 
-
- <a href="/logs/new">Create a New Run Log</a>
 
 
 
