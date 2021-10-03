@@ -1,17 +1,19 @@
-<form method="POST" action="/log/<%=@log.id%>/edit">
-    <input id="hidden" type="hidden" name="_method" value="patch"/>
+<h2>Edit Log</h2>
+
+<form method="post" action="/logs/<%=@log%>">
+    <input id="hidden" type="hidden" name="_method" value="PATCH"/>
 
     <label for="distance">Distance</label>
-    <input type="text" id="distance" name="distance" value="<%=@log.distance%>" />
+    <input type="text" name="distance" value="<%=@log%>" />
 
     <label for="pace">Pace</label>
-    <input type="text" id="pace" name="pace" value="<%=@log.pace%>" /> 
+    <input type="text"  name="pace" value="<%=@log%>" /> 
 
     <label for="avg_heart_rate">Average Heart Rate</label>
-    <input type="text" id="avg_heart_rate" name="avg_heart_rate" value="<%=@log.avg_heart_rate%>" />
+    <input type="text"  name="avg_heart_rate" value="<%=@log%>" />
 
     <label for="notes">Notes</label>
-    <input type="text" id="notes" name="notes" value="<%=@log.notes%>" />
+    <input type="text"  name="notes" value="<%=@log%>" />
 
-    <input type="subimt" value="submit" />
+    <input type="submit" value="submit" />
 </form>

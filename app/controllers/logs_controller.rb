@@ -51,15 +51,13 @@ class LogsController < ApplicationController
     #edit log 
     get '/logs/:id/edit' do 
         if logged_in?
-             @log = Log.find_by_id(params[:id])
-            if @log && @log.user == current_user
-                erb :'/log/edit'
-             else 
-                redirect to '/logs'
-             end 
+            erb :'/log/edit'
         else 
-            redirect to '/login'
+            redirect to '/logs'
         end 
+        # else 
+        #     redirect to '/login'
+        # end 
     end 
 
     patch '/logs/:id' do 
