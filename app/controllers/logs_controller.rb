@@ -56,7 +56,10 @@ class LogsController < ApplicationController
     patch '/logs/:id' do 
             @log = Log.find_by_id(params[:id])
             @log.update(distance: params[:distance])
-            redirect to "/logs"        
+            @log.update(pace: params[:pace])
+            @log.update(avg_heart_rate: params[:avg_heart_rate])
+            @log.update(notes: params[:notes])
+            redirect to "/logs/#{@log.id}"        
     end 
 
 
