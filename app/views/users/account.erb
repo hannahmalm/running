@@ -1,12 +1,6 @@
 <p>Welcome, <%= current_user.username %>
 <br>
-
-<% @user.logs.each do |log| %>
-    <div>
-        <%= log.date %>
-    <div>
-<%end%>
-
+<br>
 <a href="/logs/new">Create a New Run Log</a>
 <br>
 <br>
