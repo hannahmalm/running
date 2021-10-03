@@ -39,16 +39,7 @@ class LogsController < ApplicationController
             redirect to '/login'
         end 
     end 
-
-    #  #show log 
-    #  get '/logs/show' do 
-    #     if logged_in?
-    #         erb :'/log/show'
-    #     else 
-    #         redirect to '/login'
-    #     end 
-    # end 
-
+    
     #edit log 
     get '/logs/:id/edit' do  #DONE
         if logged_in?
@@ -77,6 +68,7 @@ class LogsController < ApplicationController
             redirect to '/login'
         end 
     end 
+
 
     #delete a log 
     delete '/logs/:id' do 
