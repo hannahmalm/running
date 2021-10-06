@@ -4,7 +4,9 @@
 <a href="/logs/new">Create a New Run Log</a>
 <br>
 <br>
-<% Log.all.each do |log|%>
+<% @logs.each do |log| %>
+<li><%=log.date%></li>
+<%end%>
 <br>
 <p><a href="/logout">Log Out</a></p>
 

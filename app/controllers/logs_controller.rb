@@ -1,6 +1,7 @@
 class LogsController < ApplicationController
     get "/logs" do #DONE
        if logged_in?
+            @logs = Log.all
             erb :'/users/account'
        else 
             redirect to '/login'
