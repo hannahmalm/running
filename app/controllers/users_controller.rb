@@ -18,7 +18,13 @@ class UsersController < ApplicationController
     end 
 
     get "/details" do 
-        redirect to "/logs/:id"
+        if logged_in?
+            @log = Log.find_by_id(params[:id])
+            redirect to "/logs/#{@log.id}"  
+            erb :'/log/show'
+        else 
+            redirect to '/login'
+        end 
     end 
 
     post "/login" do #DONE
