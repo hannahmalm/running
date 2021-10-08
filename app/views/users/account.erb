@@ -5,7 +5,7 @@
 <br>
 <br>
 <% @logs.each do |log| %>
-<li><%=log.date%></li>
+<li><a href="/details"><%=log.id%></a> - <%=log.date%></li>
 <%end%>
 <br>
 <p><a href="/logout">Log Out</a></p>

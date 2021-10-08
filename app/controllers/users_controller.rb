@@ -25,6 +25,10 @@ class UsersController < ApplicationController
          erb :'/users/login' 
     end 
 
+    get "/details" do 
+        redirect to "/logs/:id"
+    end 
+
     post "/login" do #DONE
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
