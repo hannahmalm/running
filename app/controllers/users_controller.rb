@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     end 
 
     get "/logout" do #DONE
-        if logged_in
+        if logged_in?
             session.clear
             redirect "/login"
         else 
@@ -42,8 +42,16 @@ class UsersController < ApplicationController
 
 
     helpers do 
-        def logged_in
-            current_user
+        # def logged_in
+        #     current_user
+        # end 
+
+        # def current_user 
+        #     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+        # end 
+
+        def logged_in?
+            !!current_user
         end 
 
         def current_user 
