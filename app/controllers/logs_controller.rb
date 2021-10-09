@@ -8,22 +8,17 @@ class LogsController < ApplicationController
     end 
 
 
-    #show only logged in users logs
+    #show only logs that BELONG to a user
     get "/logs/all" do 
         if logged_in?
-            @log = Log.find_by_id(params[:id])
-            if @log && @log.user == current_user
-                @logs = Log.all
-                erb :'/log/all'
-            else 
-                redirect to '/logs'
-            end 
+            @logs = Log.all
+            erb :'/log/all'
         else 
             redirect to '/login'
         end 
     end 
     
-    #new log 
+    #new log -DONE
     get '/logs/new' do #DONE
         if logged_in?
             erb :'/log/new'
@@ -34,7 +29,8 @@ class LogsController < ApplicationController
 
     post '/logs' do #DONE
         if logged_in?
-            @log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :owner_id => params[:owner_id])
+            #@log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :owner_id => params[:owner_id])
+            @log = current_user.logs.build(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :user_id => params[:user_id])
             if @log.save
                 redirect to "/logs"
                 #redirect to "/logs/#{@log.id}"
@@ -61,13 +57,21 @@ class LogsController < ApplicationController
     get '/logs/:id/edit' do  #DONE
         if logged_in?
             @log = Log.find(params[:id])
-            erb :'/log/edit'
+            if @log && @log.user == current_user
+                erb :'/log/edit'
+            else 
+                redirect to '/error'
+            end 
         else 
-            redirect to '/logs'
+            redirect to '/login'
         end 
         # else 
         #     redirect to '/login'
         # end 
+    end 
+
+    get '/error'
+        puts "Oops - You cannot edit or delete another users log!"
     end 
 
     patch '/logs/:id' do 
