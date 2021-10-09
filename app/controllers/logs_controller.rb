@@ -41,14 +41,6 @@ class LogsController < ApplicationController
         end 
     end 
 
-    # get '/logs/:id/details' do 
-    #     if logged_in?
-    #         @log = Log.find_by_id(params[:id]) 
-    #         erb :'/log/show'
-    #     else 
-    #         redirect to '/logs'
-    #     end 
-    # end 
 
     #edit log 
     get '/logs/:id/edit' do  #DONE
