@@ -65,13 +65,10 @@ class LogsController < ApplicationController
         else 
             redirect to '/login'
         end 
-        # else 
-        #     redirect to '/login'
-        # end 
     end 
 
-    get '/error'
-        puts "Oops - You cannot edit or delete another users log!"
+    get '/error' do 
+        erb :'/error'
     end 
 
     patch '/logs/:id' do 
