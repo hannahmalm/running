@@ -56,7 +56,6 @@ class LogsController < ApplicationController
         end 
     end 
 
-
     #edit log 
     get '/logs/:id/edit' do  #DONE
         if logged_in?
@@ -84,10 +83,7 @@ class LogsController < ApplicationController
             redirect to "/logs/#{@log.id}"        
     end 
 
-    
-
-
-    delete a log 
+    #delete a log 
     delete '/logs/:id' do 
         if logged_in?
             @log = Log.find_by_id(params[:id])
