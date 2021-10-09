@@ -1,11 +1,20 @@
 class LogsController < ApplicationController
     get "/logs" do #DONE
        if logged_in?
-            @logs = Log.all
             erb :'/users/account'
+           
        else 
             redirect to '/login'
        end 
+    end 
+
+    get "/logs/all" do 
+        if @log.owner_id == current_user
+            @logs = Log.all
+            erb :'/log/all'
+        else 
+            redirect to '/login'
+        end 
     end 
     
     #new log 
@@ -92,7 +101,7 @@ class LogsController < ApplicationController
         end 
 
         def current_user 
-            @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+            @current_user ||= User.find_by(id: session[:owner_id]) if session[:owner_id]
         end 
     end 
         
