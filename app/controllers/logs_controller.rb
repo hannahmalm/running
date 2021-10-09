@@ -2,15 +2,16 @@ class LogsController < ApplicationController
     get "/logs" do #DONE
        if logged_in?
             erb :'/users/account'
-           
        else 
             redirect to '/login'
        end 
     end 
 
+
+    #show only logged in users logs
     get "/logs/all" do 
-        if @log.owner_id == current_user
-            @logs = Log.all
+        if logged_in?
+            @log = Log.find_by_id()
             erb :'/log/all'
         else 
             redirect to '/login'
@@ -29,6 +30,7 @@ class LogsController < ApplicationController
     post '/logs' do #DONE
         if logged_in?
             @log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :owner_id => params[:owner_id])
+            #@log = current_user.logs.build(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :owner_id => params[:owner_id])
             if @log.save
                 redirect to "/logs"
                 #redirect to "/logs/#{@log.id}"
@@ -89,11 +91,11 @@ class LogsController < ApplicationController
 
     helpers do 
         def logged_in?
-            !!current_user
+            current_user
         end 
 
         def current_user 
-            @current_user ||= User.find_by(id: session[:owner_id]) if session[:owner_id]
+            @current_user = User.find_by(id: session[:user_id]) if session[:user_id]
         end 
     end 
         
