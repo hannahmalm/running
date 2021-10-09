@@ -87,7 +87,7 @@ class LogsController < ApplicationController
     
 
 
-    #delete a log 
+    delete a log 
     delete '/logs/:id' do 
         if logged_in?
             @log = Log.find_by_id(params[:id])
@@ -101,6 +101,7 @@ class LogsController < ApplicationController
             redirect to '/login'
         end
     end 
+
 
     helpers do 
         def logged_in?
