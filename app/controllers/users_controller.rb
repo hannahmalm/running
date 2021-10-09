@@ -4,6 +4,11 @@ class UsersController < ApplicationController
         erb :'/users/signup'
     end 
 
+    get "/usernames" do 
+        @user = User.find_by_id(params[:id])
+        @username = @user.username
+    end 
+
     post "/signup" do #DONE
         if params[:username] == "" || params[:password] == ""
             redirect '/failure'

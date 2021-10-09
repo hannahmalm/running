@@ -98,7 +98,6 @@ class LogsController < ApplicationController
         end
     end 
 
-
     helpers do 
         def logged_in?
             current_user
