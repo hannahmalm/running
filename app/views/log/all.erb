@@ -1,5 +1,6 @@
+<p> Welcome to the Run Log. The place to track your time and compete anonomusly against others</p>
 <% @logs.each do |log| %>
-<li><a href="/logs/<%=log.id%>"><%=log.id%></a> - <%=log.date%></li>
+<li><a href="/logs/<%=log.id%>"><%=log.id%>:</a><%=log.distance%> - <%=log.pace%></li>
 <%end%>
 
 <br>

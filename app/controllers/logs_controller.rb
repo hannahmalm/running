@@ -11,8 +11,12 @@ class LogsController < ApplicationController
     #show only logs that BELONG to a user
     get "/logs/all" do 
         if logged_in?
-            @logs = Log.all
-            erb :'/log/all'
+            if  session[:user_id] 
+                @logs = Log.all
+                erb :'/log/all'
+            else 
+                redirect to '/logs'
+            end 
         else 
             redirect to '/login'
         end 
@@ -87,8 +91,12 @@ class LogsController < ApplicationController
     delete '/logs/:id' do 
         if logged_in?
             @log = Log.find_by_id(params[:id])
-            @log.delete 
-            redirect to '/logs'
+            if @log && @log.user == current_user
+                @log.delete
+                redirect to '/logs'
+            else 
+                redirect to '/error'
+            end  
         else 
             redirect to '/login'
         end
