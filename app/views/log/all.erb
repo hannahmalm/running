@@ -1,9 +1,9 @@
-<p> Welcome to the Run Log. The place to track your time and compete anonymously against others!</p>
-    <p>Your user id is: <%= current_user.id %></p>
-<% @logs.each do |log| %>
-<li><a href="/logs/<%=log.id%>">User ID: <%=log.user_id%>: </a><%=log.distance%> Miles - <%=log.pace%></li>
-<%end%>
+<h1> Welcome to the Run Log. The place to track your time and compete anonymously against others!</h1>
+    <h2>Your user id is: <%= current_user.id %></h2>
 
+<% @logs.each do |log| %>
+<ul><a href="/logs/<%=log.id%>">User ID: <%=log.user_id%>: </a><%=log.distance%> Miles - <%=log.pace%></ul>
+<%end%>
 
 <br>
 <a href="/logs">Back to Account </a>
