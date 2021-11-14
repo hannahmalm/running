@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'activerecord', '<=5.1', :require => 'active_record'
+gem 'activerecord', '<=5.1', :require => 'active_record' #Active Record is used to establish connection w db
 gem 'sinatra-activerecord'
-gem 'rake'
+gem 'rake' #Tool that automates certian jobs
 gem 'bcrypt'
 gem 'require_all'
 gem 'capybara'
