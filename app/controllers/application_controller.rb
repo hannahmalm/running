@@ -1,7 +1,8 @@
 require "./config/envrionment"
 class ApplicationController < Sinatra::Base 
+    #controller inherits from Sinatra::Base, when server starts, it spins an instance of application controller
 
-    configure do 
+    configure do  #configure block tells controller where to look for views and enable sessions
         set :public_folder, 'public'
         set :views, "app/views"
         enable :sessions
