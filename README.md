@@ -1,6 +1,6 @@
 # Running
 
-Welcome to your running log. Please run bundle install and shotgun to get started.
+Welcome to your running log. Please run bundle install and shotgun to get started. Navigate to the link within the terminal to access this application. 
 
 ## Installation
 
@@ -20,7 +20,9 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+1. Run bundle install
+2. Run shotgun 
+3. Navigate to link within terminal
 
 ## Development
 
