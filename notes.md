@@ -49,10 +49,10 @@
     │ ├── create_user.erb
     │ └── edit_user.erb
     ├── config
-    │ └── environment.rb
-    ├── config.ru
+    │ └── environment.rb - Use file to connect up all files within the app, file loads bundler and all gems in gemfile 
+    ├── config.ru - Used for Rack based applications and for using Shotgun
     ├── db
-    ├── public
+    ├── public - holds front end assets such as css stylesheets and javascript directories 
 
 
 2. Set up gemfile and bundle install gems
@@ -65,6 +65,8 @@
     require ‘sinatra/activerecord/rake’ #loads Rake tasks
 8. Create DB migration
     - for every table created, create a corresponding model class in models director, and a controller 
+
+    - Could use corneal scaffold NAME to set up folder structure and delete out spec file 
 
 9. Models - The logic of the web app. This is where data is manipulated/saved
 10. Views - The front end of the user facing part of the application. Has CSS, HTML, and Javascript. This is the only thing the user interacts with directly
