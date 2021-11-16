@@ -1,6 +1,6 @@
 class LogsController < ApplicationController
     get "/logs" do #DONE
-       if logged_in?
+       if logged_in? #if a User is logged in, show the users account
             erb :'/users/account'
        else 
             redirect to '/login'
@@ -8,7 +8,7 @@ class LogsController < ApplicationController
     end 
 
 
-    #show only logs that BELONG to a user
+    #show all the logs
     get "/logs/all" do 
         if logged_in?
             if  session[:user_id] 
