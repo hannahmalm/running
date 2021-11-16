@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
         set :public_folder, 'public'
         set :views, "app/views"
         enable :sessions
-        set :session_secret, "password_security"
+        set :session_secret, "password_security" #extra layer of security
     end 
 
     get "/" do 
@@ -14,12 +14,13 @@ class ApplicationController < Sinatra::Base
     end 
 
     helpers do 
-        def logged_in?
+        def logged_in? #will return boolean t/f, if nil it will return false
             !!current_user
         end 
 
         def current_user 
-            @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+            @current_user ||= User.find_by(id: session[:user_id]) #if session[:user_id]
+            #Use ||= because if the current user is already called/found it wont look into the db again
         end 
     end 
 end 

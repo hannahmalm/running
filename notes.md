@@ -79,5 +79,8 @@
     - Logs belong to Users
 10. Views - The front end of the user facing part of the application. Has CSS, HTML, and Javascript. This is the only thing the user interacts with directly
 11. Controllers - Go between for models and views - relays data from the view to the model and then back to the view
+     - It is the responsibility of either the session/user to log in or out 
+
+     **AFTER ADDING IN CONTROLLERS/ROUTES, ADD THEM INTO config.ru**
 12. View --> Controller --> Model --> Controller --> View 
 13. MVC allows for organization and to keep files seperated using seperation of concerns 
