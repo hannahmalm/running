@@ -2,7 +2,7 @@ require './config/envrionment'
 
 #require './app/controllers/application_controller'
 #require './app/controllers/log_controller'
-use Rack::MethodOverride
+use Rack::MethodOverride #In order to send patch and delete requests
 use LogsController
 use UsersController
 run ApplicationController

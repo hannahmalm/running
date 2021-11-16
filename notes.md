@@ -52,6 +52,8 @@
     │ └── environment.rb - Use file to connect up all files within the app, file loads bundler and all gems in gemfile 
     ├── config.ru - Used for Rack based applications and for using Shotgun
     ├── db
+        - User - Needs a unique username and password_digest
+        - Log 
     ├── public - holds front end assets such as css stylesheets and javascript directories 
 
 
@@ -65,10 +67,16 @@
     require ‘sinatra/activerecord/rake’ #loads Rake tasks
 8. Create DB migration
     - for every table created, create a corresponding model class in models director, and a controller 
-
     - Could use corneal scaffold NAME to set up folder structure and delete out spec file 
+    - Created Users table - Every user should have a unique username and password digest
+    - Create Log table - Every log should have a date, userid, etc.
+        - have foreign key of user id
+    - Rake db:migrate
 
 9. Models - The logic of the web app. This is where data is manipulated/saved
+    - User has many logs
+    - User has secure password
+    - Logs belong to Users
 10. Views - The front end of the user facing part of the application. Has CSS, HTML, and Javascript. This is the only thing the user interacts with directly
 11. Controllers - Go between for models and views - relays data from the view to the model and then back to the view
 12. View --> Controller --> Model --> Controller --> View 
