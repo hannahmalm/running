@@ -50,12 +50,15 @@ class LogsController < ApplicationController
         if !logged_in?
             redirect to '/login'
         end 
-        if params[:date] != "" && params[:distance] != "" && params[:pace] != "" && params[:user_id] != ""
-            @log = current_user.logs.build(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :user_id => params[:user_id])
-            @log.save #@log.create does not work, do this workaround 
+        @log = current_user.logs.build(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :user_id => params[:user_id])
+        if   @log.save #@log.create does not work, do this workaround 
+            #params[:date] != "" && params[:distance] != "" && params[:pace] != "" && params[:user_id] != ""
+            # @log = current_user.logs.build(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :user_id => params[:user_id])
             redirect to "/logs"
         else 
             #print a flash error stating that these fields are required
+            flash[:required] = "Date, Distance, and Pace are required" 
+4  end 
             redirect to "/logs/new"
         end 
     end 
