@@ -99,10 +99,10 @@ class LogsController < ApplicationController
 
     #delete a log 
     delete '/logs/:id' do 
-        if logged_in?
-            @log = Log.find_by_id(params[:id])
-            if @log && @log.user == current_user
-                @log.delete
+        if logged_in? #check to see if a user is logged in
+            @log = Log.find_by_id(params[:id]) #find the log id a user wants to delete
+            if @log && @log.user == current_user #check to see if the log id matches the current user
+                @log.delete #delete the log
                 redirect to '/logs'
             else 
                 redirect to '/error'
