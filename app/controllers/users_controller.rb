@@ -23,6 +23,7 @@ class UsersController < ApplicationController
         if user && user.authenticate(params[:password]) #if the username and password match
             session[:user_id] = user.id #create the session - will only work if set up in app controller first - This is whats actually logging the user in and assigning the key/value pair to session hash
             redirect to "/logs" #redirect to the users homepage
+            #redirect to "/users/#{@user.id}"
         else 
             redirect to "/failure" #if the username/pass dont match, send failure mesage
         end 

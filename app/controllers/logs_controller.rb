@@ -74,7 +74,7 @@ class LogsController < ApplicationController
     #edit log 
     get '/logs/:id/edit' do  #DONE
         if logged_in?
-            @log = Log.find(params[:id])
+            @log = Log.find(params[:id]) #find the log you want to edit 
             if @log && @log.user == current_user
                 erb :'/log/edit'
             else 
