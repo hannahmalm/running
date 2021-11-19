@@ -104,3 +104,6 @@ Users, Cookies, and Secure passwords
     - Sessions and cookies help keep track of current user
 6. How do sessions and cookies work
     - Request --> Browser creates cookie --> Server receives request --> Sinatra takes cookie and converts to hash --> access this hash through sessions method --> add key value pairs to session hash --> sinatra will tell the browser to update cookie for next request
+7. Sinatra apps have sessions disabled by default
+    - must enable them; take the cookie and turn it to a session hash
+8. set session_secret because every time the server is restarted, creating a new session_secret clears out any information the browser stored- stops the server from trying to set a new cookie every time
