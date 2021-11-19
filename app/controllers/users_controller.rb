@@ -8,8 +8,9 @@ class UsersController < ApplicationController
         if params[:username] == "" || params[:password] == "" #Ensure form is complete
             redirect '/failure' #else redirect to failture
         else 
-            @user = User.create(username: params[:username], password: params[:password]) #If the form is complete, create the user
-            session[:user_id] = @user.id #create the session with the user id
+            #user = User.create(params)
+            user = User.create(username: params[:username], password: params[:password]) #If the form is complete, create the user
+            session[:user_id] = user.id #create the session with the user id
             redirect "/logs" #redirect to the homepage
         end 
     end 
