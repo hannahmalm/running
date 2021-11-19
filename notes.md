@@ -83,5 +83,6 @@
      - It is the responsibility of either the session/user to log in or out 
      **AFTER ADDING IN CONTROLLERS/ROUTES, ADD THEM INTO config.ru**
      - User controller has signup(get & post), login(get&post), logout(get - does not get its own view), failure route
+     - Logs controller has logs(user page), get logs(render new page to create logs), post logs(actually create the new log), show logs()
 12. View --> Controller --> Model --> Controller --> View 
 13. MVC allows for organization and to keep files seperated using seperation of concerns 

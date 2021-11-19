@@ -7,3 +7,4 @@ use LogsController
 use UsersController
 run ApplicationController
 #you can only run one thing and the controlelrs need to be after the methodoverride
+#Ensure that you are mounting these controllers with USE

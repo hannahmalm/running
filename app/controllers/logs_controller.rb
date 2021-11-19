@@ -89,13 +89,20 @@ class LogsController < ApplicationController
         erb :'/error'
     end 
 
+    # patch '/logs/:id' do 
+    #         @log = Log.find_by_id(params[:id])
+    #         @log.update(distance: params[:distance])
+    #         @log.update(pace: params[:pace])
+    #         @log.update(avg_heart_rate: params[:avg_heart_rate])
+    #         @log.update(notes: params[:notes])
+    #         redirect to "/logs/#{@log.id}"        
+    # end 
+
+
     patch '/logs/:id' do 
-            @log = Log.find_by_id(params[:id])
-            @log.update(distance: params[:distance])
-            @log.update(pace: params[:pace])
-            @log.update(avg_heart_rate: params[:avg_heart_rate])
-            @log.update(notes: params[:notes])
-            redirect to "/logs/#{@log.id}"        
+        @log = Log.find_by_id(params[:id])
+        @log.update(params[:log])
+        redirect to "/logs/#{@log.id}"        
     end 
 
     #delete a log 
