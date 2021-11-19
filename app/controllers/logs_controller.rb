@@ -72,16 +72,25 @@ class LogsController < ApplicationController
     end 
 
     #edit log 
-    get '/logs/:id/edit' do  #DONE
-        if logged_in?
-            @log = Log.find(params[:id]) #find the log you want to edit 
-            if @log && @log.user == current_user
-                erb :'/log/edit'
-            else 
-                redirect to '/error'
-            end 
+    # get '/logs/:id/edit' do  #DONE
+    #     if logged_in?
+    #         @log = Log.find(params[:id]) #find the log you want to edit 
+    #         if @log && @log.user == current_user
+    #             erb :'/log/edit'
+    #         else 
+    #             redirect to '/error'
+    #         end 
+    #     else 
+    #         redirect to '/login'
+    #     end 
+    # end 
+
+    get '/logs/:id/edit' do 
+        @log = Log.find_by(params)
+        if @log.user_id != session[:user_id]
+            redirect to '/errror'
         else 
-            redirect to '/login'
+            erb :'/log/edit'
         end 
     end 
 
