@@ -75,7 +75,7 @@
 
 9. Models - The logic of the web app. This is where data is manipulated/saved
     - User has many logs
-    - User has secure password
+    - User has secure password - see notes below
     - Logs belong to Users
 10. Views - The front end of the user facing part of the application. Has CSS, HTML, and Javascript. This is the only thing the user interacts with directly; Created Controllers & Views simultaniously
     - Layout view = standard view that has the yield, this will also have a nav bar
@@ -112,8 +112,23 @@ Users, Cookies, and Secure passwords
     - hashing = manipulate the password so its inpossible to turn it back into the orginal
     - save passwords in user column password_digest
     - ActiveRecrod has the has secure password macro that allows you to save password and authenticate
+        - All macros do is define methods for us
         - password= method : allows user to create a user with password and not password_digest attribute
             - This method uses Bcrypt to hash and salt the password THEN saves it to password_digest column
             - user enters password to password attribute --> bcrypt hashes and salts password --> bcrypt saves hashed/salted password to password_digest
             - User.create(username: params[:username], password: params[:password])
         - authenticate method : user logs in using password --> bcrypt hashes and salts input and compares this to whats saved in password_digest column
+
+10. Full User Flow
+    a. User signs up using POST request
+    b. Controller action, create a user with a password attribute (NOT password digest)
+        - user = User.create(username: params[:username], password: params[:password])
+    c. password= method (part of Active Recrod has_secure_password macro) uses Bcrypt to hash and salt
+    d. hashed and salted password is saved into password_digest column
+    e. add key-value papir to session hash to keep track of current user
+        session[:user_id]= user.id
+    f. response to browers includes set-cookie header that tells browser to update cookie
+    g. every subsequent request includes cookie and Sinatra converts cookie to session hash
+    h. User logs out, clear session hash and tell the browser to remove user id from cookie
+    i. User logs back in, enter username/password and post request 
+    j. find username and user ActiveRecord authenticate method (part of has_secure_password) which calls bcrypt to hash/salt user input and compare it to the value is password digest column
