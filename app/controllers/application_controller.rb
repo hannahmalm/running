@@ -1,13 +1,17 @@
 require "./config/envrionment"
 class ApplicationController < Sinatra::Base 
     #controller inherits from Sinatra::Base, when server starts, it spins an instance of application controller
-
+    #Sessions determine current users - this is a job from SINATRA
+    #session method is inherited from Sinatra::Base
+    #cookie = hash stored in browser that stores info on current user
+    #session is hash like object that holds info on server side 
     configure do  #configure block tells controller where to look for views and enable sessions
         set :public_folder, 'public'
         set :views, "app/views"
         enable :sessions
         set :session_secret, "password_security" #extra layer of security
     end 
+
 
     get "/" do 
         # if logged_in?
