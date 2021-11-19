@@ -86,3 +86,21 @@
      - Logs controller has logs(user page), get logs(render new page to create logs), post logs(actually create the new log), show logs()
 12. View --> Controller --> Model --> Controller --> View 
 13. MVC allows for organization and to keep files seperated using seperation of concerns 
+
+
+
+
+
+
+--------------------------------------------------------------------------------------------
+Users, Cookies, and Secure passwords
+1. sessions - Sinatra; Inherit from Sinatra::Base
+2. Secute passwords - authenticate users; Job for ActiveRecord
+    - has a has_secure_password macro
+3. Cookies = hash in the browser
+4. Session = hash like info in the server
+5. Why are cookies & sessions used?
+    - HTTP is stateless - it does not carry over any request
+    - Sessions and cookies help keep track of current user
+6. How do sessions and cookies work
+    - Request --> Browser creates cookie --> Server receives request --> Sinatra takes cookie and converts to hash --> access this hash through sessions method --> add key value pairs to session hash --> sinatra will tell the browser to update cookie for next request
