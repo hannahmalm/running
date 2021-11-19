@@ -107,3 +107,13 @@ Users, Cookies, and Secure passwords
 7. Sinatra apps have sessions disabled by default
     - must enable them; take the cookie and turn it to a session hash
 8. set session_secret because every time the server is restarted, creating a new session_secret clears out any information the browser stored- stops the server from trying to set a new cookie every time
+9. Use bcrypt to salt and hash a password
+    - salting = adding random string of characters to the password
+    - hashing = manipulate the password so its inpossible to turn it back into the orginal
+    - save passwords in user column password_digest
+    - ActiveRecrod has the has secure password macro that allows you to save password and authenticate
+        - password= method : allows user to create a user with password and not password_digest attribute
+            - This method uses Bcrypt to hash and salt the password THEN saves it to password_digest column
+            - user enters password to password attribute --> bcrypt hashes and salts password --> bcrypt saves hashed/salted password to password_digest
+            - User.create(username: params[:username], password: params[:password])
+        - authenticate method : user logs in using password --> bcrypt hashes and salts input and compares this to whats saved in password_digest column
