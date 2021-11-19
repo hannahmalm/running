@@ -109,9 +109,11 @@ class LogsController < ApplicationController
 
 
     patch '/logs/:id' do 
-        @log = Log.find_by_id(params[:id])
-        @log.update(params[:log])
-        redirect to "/logs/#{@log.id}"        
+        log = Log.find_by_id(params[:id])
+        if log.user_id == session[:user_id]
+             log.update(params[:log])
+             redirect to "/logs/#{log.id}"    
+        end    
     end 
 
     #delete a log 
