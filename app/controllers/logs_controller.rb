@@ -46,6 +46,11 @@ class LogsController < ApplicationController
     #     end 
     # end 
 
+    get '/logs/new' do 
+        not_logged_in_helper
+        erb :'/log/new'
+    end 
+
     # post '/logs' do #DONE
     #     if logged_in?
     #         #@log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :owner_id => params[:owner_id])
