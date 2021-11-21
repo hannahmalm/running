@@ -14,18 +14,18 @@ class LogsController < ApplicationController
 
 
     #show all the logs
-    get "/logs/all" do 
-        if logged_in?
-            if  session[:user_id] 
-                @logs = Log.all
-                erb :'/log/all'
-            else 
-                redirect to '/logs'
-            end 
-        else 
-            redirect to '/login'
-        end 
-    end 
+    # get "/logs/all" do 
+    #     if logged_in?
+    #         if  session[:user_id] 
+    #             @logs = Log.all
+    #             erb :'/log/all'
+    #         else 
+    #             redirect to '/logs'
+    #         end 
+    #     else 
+    #         redirect to '/login'
+    #     end 
+    # end 
     
     #new log -DONE
     get '/logs/new' do #DONE
