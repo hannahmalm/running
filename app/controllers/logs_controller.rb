@@ -38,13 +38,13 @@ class LogsController < ApplicationController
     end 
     
     #new log -DONE
-    get '/logs/new' do #DONE
-        if logged_in?
-            erb :'/log/new'
-        else 
-            redirect to '/login'
-        end 
-    end 
+    # get '/logs/new' do #DONE
+    #     if logged_in?
+    #         erb :'/log/new'
+    #     else 
+    #         redirect to '/login'
+    #     end 
+    # end 
 
     # post '/logs' do #DONE
     #     if logged_in?
