@@ -114,18 +114,20 @@ class LogsController < ApplicationController
 
     get '/logs/:id/edit' do 
         not_logged_in_helper
-        @log = Log.find_by(params)
-        if @log.user_id != session[:user_id]
-            redirect erb :'/log/edit'
+        @log = Log.find_by(params[:id])
+        if @log && @log.user == current_user
+            erb :'/log/edit'
         else 
             flash[:error] = "You can only edit your log!"
+          
             #redirect to '/error'
+            erb :'/users/account'
         end 
     end 
 
-    # get '/error' do 
-    #     erb :'/error'
-    # end 
+    get '/error' do 
+        erb :'/error'
+    end 
 
     # patch '/logs/:id' do 
     #         @log = Log.find_by_id(params[:id])
