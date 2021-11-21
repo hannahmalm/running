@@ -6,7 +6,9 @@ class UsersController < ApplicationController
 
     post "/signup" do #Once a user inputs into the form, post it
         if params[:username] == "" || params[:password] == "" #Ensure form is complete
-            redirect '/failure' #else redirect to failture
+            #redirect '/failure' #else redirect to failture
+            flash[:message] = "Username and Password must not be blank"
+            erb :'/users/signup'
         else 
             if user.valid?
             #user = User.create(params)
