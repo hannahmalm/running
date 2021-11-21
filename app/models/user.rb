@@ -4,4 +4,5 @@ class User < ActiveRecord::Base
     #Save secure passwords into the database and later authenticate users
     #has secure password is a job for ACTIVE RECORD
     has_many :logs
+    validates :username, uniqueness: true
 end 

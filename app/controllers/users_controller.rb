@@ -10,13 +10,14 @@ class UsersController < ApplicationController
             flash[:message] = "Username and Password must not be blank"
             erb :'/users/signup'
         else 
+            user = User.create(params)
             if user.valid?
-            #user = User.create(params)
-                user = User.create(username: params[:username], password: params[:password]) #If the form is complete, create the user
+                #user = User.create(username: params[:username], password: params[:password]) #If the form is complete, create the user
                 session[:user_id] = user.id #create the session with the user id
                 redirect "/logs" #redirect to the homepage
             else
-                flash[:message] = user.errors.full_message
+                flash[:username] = "Sorry, this username is already taken"
+                redirect "/signup"
             end 
         end 
 
