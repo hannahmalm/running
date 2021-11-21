@@ -12,6 +12,7 @@ gem 'rack-test'
 gem 'shotgun'
 gem 'pry'
 gem 'rails'
+gem 'sinatra-flash'
 
 group :development do 
 gem 'sqlite3', '~>1.3.6'
