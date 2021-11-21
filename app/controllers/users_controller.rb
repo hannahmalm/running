@@ -26,7 +26,9 @@ class UsersController < ApplicationController
             redirect to "/logs" #redirect to the users homepage
             #redirect to "/users/#{@user.id}"
         else 
-            redirect to "/failure" #if the username/pass dont match, send failure mesage
+            flash[:message] == "Please enter a valid Username and Password"
+            redirect to "/login"
+            #redirect to "/failure" #if the username/pass dont match, send failure mesage
         end 
     end 
 
