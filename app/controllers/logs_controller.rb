@@ -1,10 +1,15 @@
 class LogsController < ApplicationController
-    get "/logs" do #DONE
-       if logged_in? #if a User is logged in, show the users account
-            erb :'/users/account'
-       else 
-            redirect to '/login'
-       end 
+    # get "/logs" do #DONE
+    #    if logged_in? #if a User is logged in, show the users account
+    #         erb :'/users/account'
+    #    else 
+    #         redirect to '/login'
+    #    end 
+    # end 
+
+    get "/logs" do 
+        not_logged_in_helper
+        erb :'/users/account'
     end 
 
 
