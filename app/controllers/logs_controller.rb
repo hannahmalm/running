@@ -158,4 +158,15 @@ class LogsController < ApplicationController
         end
     end 
 
+    delete '/logs/:id' do 
+        not_logged_in_helper
+        @log = Log.find_by_id(params[:id]) #find the log id a user wants to delete
+        if @log && @log.user == current_user #check to see if the log id matches the current user
+            @log.delete #delete the log
+            redirect to '/logs'
+        else 
+            flash[:delete] = "You can only delete your own logs!"
+            redirect erb :'/users/account'
+        end 
+
 end 
