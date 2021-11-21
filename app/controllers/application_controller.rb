@@ -31,5 +31,11 @@ class ApplicationController < Sinatra::Base
             @current_user ||= User.find_by(id: session[:user_id]) 
             #Use ||= because if the current user is already called/found it wont look into the db again
         end 
+
+        def not_logged_in_redirect
+            if !current_user
+                redirect to "/login"
+            end 
+        end 
     end 
 end 
