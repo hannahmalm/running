@@ -41,10 +41,13 @@
 </head>
     <body>
         <% if logged_in? %>
-        <div class="nav">
-        <a href="/logout">Logout</a>
-        <a href="/logs/all">View all Logs</a>
+            <a href="/logout">Logout</a>
+         <% end %>
+         
+        <% if logged_in? %>
+            <a href="/logs/all">View all Logs</a>
         <% end %>
+
         <%= yield %>
     </body>
 </html>
