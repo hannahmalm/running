@@ -115,7 +115,7 @@ class LogsController < ApplicationController
     get '/logs/:id/edit' do 
         @log = Log.find_by(params)
         if @log.user_id != session[:user_id]
-            redirect to '/errror'
+            redirect to '/error'
         else 
             erb :'/log/edit'
         end 
