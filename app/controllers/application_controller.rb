@@ -12,6 +12,7 @@ class ApplicationController < Sinatra::Base
         set :session_secret, "password_security" #extra layer of security
     end 
 
+    register Sinatra::Flash #sinatra takes this info and turns it into a hash
 
     get "/" do 
         # if logged_in?
