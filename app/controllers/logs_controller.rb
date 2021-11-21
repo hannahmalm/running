@@ -67,9 +67,10 @@ class LogsController < ApplicationController
     # end 
 
     post '/logs' do 
-        if !logged_in?
-            redirect to '/login'
-        end 
+        # if !logged_in?
+        #     redirect to '/login'
+        # end 
+        not_logged_in_helper
         if  
             params[:date] != "" && params[:distance] != "" && params[:pace] != "" && params[:user_id] != ""
             @log = current_user.logs.build(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :user_id => params[:user_id])
