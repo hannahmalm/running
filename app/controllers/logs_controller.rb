@@ -92,6 +92,12 @@ class LogsController < ApplicationController
     #     end 
     # end 
 
+    get '/logs/:id' do 
+        not_logged_in_helper
+        @log = Lob.find_by_id(params[:id])
+        erb :'/log/show'
+    end 
+
     #edit log 
     # get '/logs/:id/edit' do  #DONE
     #     if logged_in?
