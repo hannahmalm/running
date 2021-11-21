@@ -94,7 +94,7 @@ class LogsController < ApplicationController
 
     get '/logs/:id' do 
         not_logged_in_helper
-        @log = Lob.find_by_id(params[:id])
+        @log = Log.find_by_id(params[:id])
         erb :'/log/show'
     end 
 
@@ -113,10 +113,12 @@ class LogsController < ApplicationController
     # end 
 
     get '/logs/:id/edit' do 
+        not_logged_in_helper
         @log = Log.find_by(params)
         if @log.user_id != session[:user_id]
-            flash[:error] = "You can only edit your log!"
             redirect erb :'/log/edit'
+        else 
+            flash[:error] = "You can only edit your log!"
             #redirect to '/error'
         end 
     end 
@@ -139,6 +141,7 @@ class LogsController < ApplicationController
         log = Log.find_by_id(params[:id])
         if log.user_id == session[:user_id]
              log.update(params[:log])
+             
              redirect to "/logs/#{log.id}"    
         end    
     end 
@@ -166,7 +169,7 @@ class LogsController < ApplicationController
             redirect to '/logs'
         else 
             flash[:delete] = "You can only delete your own logs!"
-            redirect erb :'/users/account'
+            erb :'/users/account'
         end 
     end 
 
