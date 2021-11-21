@@ -26,6 +26,16 @@ class LogsController < ApplicationController
     #         redirect to '/login'
     #     end 
     # end 
+
+    get "/logs/all" do 
+        not_logged_in_helper
+        if session[:user_id]
+            @logs = Log.all 
+            erb :'/log/all'
+        else 
+            redirect to '/logs'
+        end 
+    end 
     
     #new log -DONE
     get '/logs/new' do #DONE
