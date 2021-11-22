@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
     uniqueness: {
       # object = person object being validated
       # data = { model: "Person", attribute: "Username", value: <username> }
-      message: ->(data) do
-        "#{data[:value]} is already taken."
+      message: ->(User) do
+        "#{user[:value]} is already taken."
       end
     }
-end
+    end
 end 

@@ -132,3 +132,12 @@ Users, Cookies, and Secure passwords
     h. User logs out, clear session hash and tell the browser to remove user id from cookie
     i. User logs back in, enter username/password and post request 
     j. find username and user ActiveRecord authenticate method (part of has_secure_password) which calls bcrypt to hash/salt user input and compare it to the value is password digest column
+
+
+
+    MVC - Model View Controller
+    - Not Ruby based, just a way to organize code 
+    - DSL - Domain Specific Language (Rspec tests are an example) - create a new semantic language
+    - Ruby web apps are based on Rack - Rack allows Ruby to listen to and respond to web requests; Rack is a gem that responds to web request 
+    - Sinatra = DSL that is used for building web apps
+        - Use get and end 
