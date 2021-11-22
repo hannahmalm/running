@@ -136,8 +136,15 @@ Users, Cookies, and Secure passwords
 
 
     MVC - Model View Controller
-    - Not Ruby based, just a way to organize code 
+    - Not Ruby based, just a way to organize code/ set of conventions
     - DSL - Domain Specific Language (Rspec tests are an example) - create a new semantic language
     - Ruby web apps are based on Rack - Rack allows Ruby to listen to and respond to web requests; Rack is a gem that responds to web request 
     - Sinatra = DSL that is used for building web apps
         - Use get and end 
+    - Model CRUD
+        - C: Create. Song.create(:name => "Crazy")
+        - R: @song = Song.find(1)
+        - U: @song.sav
+        - D: @song.destroy
+    - Controllers
+        - Responsible for Application Logic
