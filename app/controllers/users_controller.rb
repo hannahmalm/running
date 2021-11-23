@@ -22,9 +22,21 @@ class UsersController < ApplicationController
                 redirect "/signup"
             end 
         end 
+    end 
+
+        post "/signup" do 
+            @user = User.new(params)
+            if @user.save 
+                session[:user_id] = user.id
+                redirect "/logs"
+            else 
+                flash[:errors] = "Signup Failure: #{@user.errors.full_messages.to_sentence}"
+                redirect "/signup"
+            end 
+        end 
 
         
-    end 
+
 
     get "/login" do #Get the login form
          erb :'/users/login' 
