@@ -30,7 +30,7 @@ class UsersController < ApplicationController
                 session[:user_id] = user.id
                 redirect "/logs"
             else 
-                flash[:errors] = "Signup Failure: #{@user.errors.full_messages.to_sentence}"
+                flash[:errors] = "Signup Failure: #{@user.errors.full_messages.to_sentence}" #https://stackoverflow.com/questions/15043272/errors-full-messages-format-in-rails-3
                 redirect "/signup"
             end 
         end 
