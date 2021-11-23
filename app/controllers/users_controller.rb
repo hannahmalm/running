@@ -55,8 +55,8 @@ class UsersController < ApplicationController
 
     get "/users/:id" do #get logs route
         not_logged_in_helper
-        @user = User.all
-        @logs = Log.all
+        # @user = User.all
+        # @logs = Log.all
         erb :'/users/account'
     end 
 

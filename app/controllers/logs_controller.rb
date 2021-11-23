@@ -31,6 +31,7 @@ class LogsController < ApplicationController
         not_logged_in_helper
         if session[:user_id]
             @logs = Log.all 
+            @user = User.find_by_id(params[:id])
             erb :'/log/all'
         else 
             redirect to '/logs'
@@ -67,15 +68,14 @@ class LogsController < ApplicationController
     # end 
 
     post '/logs' do 
-        # if !logged_in?
-        #     redirect to '/login'
-        # end 
         not_logged_in_helper
         if  
-            params[:date] != "" && params[:distance] != "" && params[:pace] != "" && params[:user_id] != ""
+            #params[:date] != "" && params[:distance] != "" && params[:pace] != "" && params[:user_id] != ""
             @log = current_user.logs.build(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :user_id => params[:user_id])
             @log.save #@log.create does not work, do this workaround 
-            redirect to "/logs/all"
+            #redirect to "/logs/all"
+            #redirect to "/users/#{current_user.id}"
+            redirect to "/logs/#{@log.id}"
         else 
             #print a flash error stating that these fields are required
             redirect to "/logs/new"
