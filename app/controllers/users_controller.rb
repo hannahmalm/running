@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-   get "/signup" do #render the signup page/form
+   get "/signup" do #Render the Signup Form
         erb :'/users/signup'
    end 
 
@@ -24,19 +24,17 @@ class UsersController < ApplicationController
     #     end 
     # end 
 
-        post "/signup" do 
-            user = User.new(params)
-            if user.save 
-                session[:user_id] = user.id
-                redirect "/logs"
-            else 
-                flash[:errors] = "Signup Failure: #{user.errors.full_messages.to_sentence}" #https://stackoverflow.com/questions/15043272/errors-full-messages-format-in-rails-3
-                redirect "/signup"
-            end 
+     post "/signup" do #local variables because not rendering ERB
+        user = User.new(params) #set local variable and inialize a new user by passing in the params
+        if user.save #save the user
+            session[:user_id] = user.id #set the session equal to the user.id
+            redirect "/logs" #once signed up, redirect to the logs page
+        else 
+            #this is a dynamic active record flash error that is standard for signup
+            flash[:errors] = "Signup Failure: #{user.errors.full_messages.to_sentence}" #https://stackoverflow.com/questions/15043272/errors-full-messages-format-in-rails-3
+            redirect "/signup" 
         end 
-
-        
-
+     end 
 
     get "/login" do #Get the login form
          erb :'/users/login' 
@@ -49,7 +47,7 @@ class UsersController < ApplicationController
             redirect to "/logs" #redirect to the users homepage
             #redirect to "/users/#{@user.id}"
         else 
-            flash[:message] = "Please enter a valid Username and Password"
+            flash[:message] = "Please enter a valid Username or Password"
             redirect to "/login"
             #redirect to "/failure" #if the username/pass dont match, send failure mesage
         end 
