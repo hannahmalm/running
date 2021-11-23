@@ -58,10 +58,6 @@ class UsersController < ApplicationController
         erb :'/users/account'
     end 
 
-    # get "/failure" do #Failure message
-    #     erb :'/failure'
-    # end 
-
     get "/logout" do #Logout if already logged in and redirect to either the login page or index page
         if logged_in?
             session.clear
