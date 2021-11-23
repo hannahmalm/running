@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
      post "/signup" do #local variables because not rendering ERB
         user = User.new(params) #set local variable and inialize a new user by passing in the params
-        if user.save #save the user
+        if user.save #save the user only if the validations pass --> validations are on user model
             session[:user_id] = user.id #set the session equal to the user.id
             redirect "/logs" #once signed up, redirect to the logs page
         else 
@@ -53,9 +53,9 @@ class UsersController < ApplicationController
         end 
     end 
 
-    get "/failure" do #Failure message
-        erb :'/failure'
-    end 
+    # get "/failure" do #Failure message
+    #     erb :'/failure'
+    # end 
 
     get "/logout" do #Logout if already logged in and redirect to either the login page or index page
         if logged_in?
