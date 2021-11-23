@@ -25,12 +25,12 @@ class UsersController < ApplicationController
     # end 
 
         post "/signup" do 
-            @user = User.new(params)
-            if @user.save 
+            user = User.new(params)
+            if user.save 
                 session[:user_id] = user.id
                 redirect "/logs"
             else 
-                flash[:errors] = "Signup Failure: #{@user.errors.full_messages.to_sentence}" #https://stackoverflow.com/questions/15043272/errors-full-messages-format-in-rails-3
+                flash[:errors] = "Signup Failure: #{user.errors.full_messages.to_sentence}" #https://stackoverflow.com/questions/15043272/errors-full-messages-format-in-rails-3
                 redirect "/signup"
             end 
         end 
