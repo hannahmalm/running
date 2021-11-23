@@ -125,9 +125,7 @@ class LogsController < ApplicationController
         end 
     end 
 
-    get '/error' do 
-        erb :'/error'
-    end 
+   
 
     # patch '/logs/:id' do 
     #         @log = Log.find_by_id(params[:id])
