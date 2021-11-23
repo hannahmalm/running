@@ -56,9 +56,8 @@ class UsersController < ApplicationController
     get "/users/:id" do #get logs route
         not_logged_in_helper
         @user = User.all
-        @log = Log.all
+        @logs = Log.all
         erb :'/users/account'
-        
     end 
 
     get "/logout" do #Logout if already logged in and redirect to either the login page or index page
