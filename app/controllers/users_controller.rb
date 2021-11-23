@@ -53,6 +53,11 @@ class UsersController < ApplicationController
         end 
     end 
 
+    get "/users/:id" do #get logs route
+        not_logged_in_helper
+        erb :'/users/account'
+    end 
+
     # get "/failure" do #Failure message
     #     erb :'/failure'
     # end 

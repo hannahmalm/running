@@ -7,10 +7,10 @@ class LogsController < ApplicationController
     #    end 
     # end 
 
-    get "/logs" do #get logs route
-        not_logged_in_helper
-        erb :'/users/account'
-    end 
+    # get "/logs" do #get logs route
+    #     not_logged_in_helper
+    #     erb :'/users/account'
+    # end 
 
 
     #show all the logs
