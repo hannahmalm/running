@@ -20,7 +20,7 @@ class UsersController < ApplicationController
          erb :'/users/login' 
     end 
 
-    post "/login" do #Once the user completes the form, find the user in the db
+    post "/login" do #Once the user completes the form, find the user in the db - DONE
         user = User.find_by(username: params[:username]) #find_by needs a key value pair
         if user && user.authenticate(params[:password]) #if the username and password match
             session[:user_id] = user.id #create the session - will only work if set up in app controller first - This is whats actually logging the user in and assigning the key/value pair to session hash
@@ -34,12 +34,12 @@ class UsersController < ApplicationController
         end 
     end 
 
-    get "/users/:id" do #get logs route
-        not_logged_in_helper
-        @user = User.find_by(id: params[:id])
-        @logs = Log.all
-        erb :'/users/account'
-    end 
+    # get "/users/:id" do #get logs route
+    #     not_logged_in_helper
+    #     @user = User.find_by(id: params[:id])
+    #     @logs = Log.all
+    #     erb :'/users/account'
+    # end 
 
     get "/logout" do #Logout if already logged in and redirect to either the login page or index page
         if logged_in?

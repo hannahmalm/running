@@ -18,3 +18,14 @@
     #         end 
     #     end 
     # end 
+
+
+
+
+    # get "/logs" do #DONE
+    #    if logged_in? #if a User is logged in, show the users account
+    #         erb :'/users/account'
+    #    else 
+    #         redirect to '/login'
+    #    end 
+    # end 
