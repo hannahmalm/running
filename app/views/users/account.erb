@@ -4,13 +4,11 @@
 <%=flash[:delete]%>
 <%=flash[:error]%>
 <br>
-   <% @user.logs.each do |log| %>
-        <ul><a href="/logs/<%=log.id%>">User ID: <%=log.user_id%>: </a><%=log.distance%> Miles - <%=log.pace%></ul>
-    <%end%>
 <br>
 <a href="/logs/new">Create a New Run Log</a>
 <br>
 <br>
+ <a href="/logs/all">View all Logs</a>
 <br>
 <br>
 

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-   get "/signup" do #Render the Signup Form
+   get "/signup" do #Render the Signup Form - DONE
         erb :'/users/signup'
    end 
 

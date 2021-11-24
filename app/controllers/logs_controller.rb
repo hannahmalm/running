@@ -7,10 +7,10 @@ class LogsController < ApplicationController
     #    end 
     # end 
 
-    # get "/logs" do #get logs route
-    #     not_logged_in_helper
-    #     erb :'/users/account'
-    # end 
+    get "/logs" do #get logs route
+        not_logged_in_helper
+        erb :'/users/account'
+    end 
 
 
     #show all the logs
@@ -34,7 +34,8 @@ class LogsController < ApplicationController
             @user = User.find_by_id(params[:id])
             erb :'/log/all'
         else 
-            redirect to '/logs'
+            #redirect to '/logs'
+            redirect to "/users/#{user.id}" 
         end 
     end 
     
@@ -115,6 +116,7 @@ class LogsController < ApplicationController
     get '/logs/:id/edit' do 
         not_logged_in_helper
         @log = Log.find_by(params[:id])
+        @user = User.find_by(params[:id])
         if @log && @log.user == current_user
             erb :'/log/edit'
         else 
@@ -164,9 +166,11 @@ class LogsController < ApplicationController
     delete '/logs/:id' do 
         not_logged_in_helper
         @log = Log.find_by_id(params[:id]) #find the log id a user wants to delete
+        @user = User.find_by(params[:id])
         if @log && @log.user == current_user #check to see if the log id matches the current user
             @log.delete #delete the log
-            redirect to '/logs'
+            redirect to "/users/#{user.id}" 
+            #redirect to '/logs'
         else 
             flash[:delete] = "You can only delete your own logs!"
             erb :'/users/account'
