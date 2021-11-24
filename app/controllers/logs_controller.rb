@@ -14,15 +14,6 @@ class LogsController < ApplicationController
         end
     end 
     
-    #new log -DONE
-    # get '/logs/new' do #DONE
-    #     if logged_in?
-    #         erb :'/log/new'
-    #     else 
-    #         redirect to '/login'
-    #     end 
-    # end 
-
     get '/logs/new' do #DONE
         not_logged_in_helper
         erb :'/log/new'

@@ -55,3 +55,20 @@
     #         redirect to '/login'
     #     end 
     # end 
+
+
+
+    # post '/logs' do #DONE
+    #     if logged_in?
+    #         #@log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :owner_id => params[:owner_id])
+    #         @log = current_user.logs.build(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :user_id => params[:user_id])
+    #         if @log.save
+    #             redirect to "/logs"
+    #             #redirect to "/logs/#{@log.id}"
+    #         else
+    #             redirect to "/logs/new"
+    #         end
+    #     else
+    #         redirect to '/login'
+    #     end 
+    # end 
