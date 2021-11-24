@@ -1,11 +1,5 @@
 class LogsController < ApplicationController
-    # get "/logs" do #DONE
-    #    if logged_in? #if a User is logged in, show the users account
-    #         erb :'/users/account'
-    #    else 
-    #         redirect to '/login'
-    #    end 
-    # end 
+    
 
     get "/logs" do #get logs route
         not_logged_in_helper
@@ -34,8 +28,7 @@ class LogsController < ApplicationController
             @user = User.find_by_id(params[:id])
             erb :'/log/all'
         else 
-            #redirect to '/logs'
-            redirect to "/users/#{user.id}" 
+            redirect to '/logs'
         end 
     end 
     

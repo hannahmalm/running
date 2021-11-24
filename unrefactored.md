@@ -29,3 +29,19 @@
     #         redirect to '/login'
     #    end 
     # end 
+
+
+
+     #show all the logs
+    # get "/logs/all" do 
+    #     if logged_in?
+    #         if  session[:user_id] 
+    #             @logs = Log.all
+    #             erb :'/log/all'
+    #         else 
+    #             redirect to '/logs'
+    #         end 
+    #     else 
+    #         redirect to '/login'
+    #     end 
+    # end 
