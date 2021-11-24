@@ -24,8 +24,8 @@ class UsersController < ApplicationController
         user = User.find_by(username: params[:username]) #find_by needs a key value pair
         if user && user.authenticate(params[:password]) #if the username and password match
             session[:user_id] = user.id #create the session - will only work if set up in app controller first - This is whats actually logging the user in and assigning the key/value pair to session hash
-            redirect to "/logs"
-            #redirect to "/users/#{user.id}" #redirect to the users homepage
+            #redirect to "/logs"
+            redirect to "/users/#{user.id}" #redirect to the users homepage
             #redirect to "/users/#{@user.id}"
         else 
             flash[:message] = "Please enter a valid Username or Password"
@@ -34,12 +34,16 @@ class UsersController < ApplicationController
         end 
     end 
 
-    # get "/users/:id" do #get logs route
-    #     not_logged_in_helper
-    #     @user = User.find_by(id: params[:id])
-    #     @logs = Log.all
-    #     erb :'/users/account'
-    # end 
+    get "/users/:id" do #get logs route
+        not_logged_in_helper
+        @user = User.find_by(id: params[:id])
+        @logs = Log.all
+            if @user.id == session[:user_id] #additional validation in place so you cant hack into an account
+                erb :'/users/account'
+            else 
+                redirect to "/login"
+            end 
+    end 
 
     get "/logout" do #Logout if already logged in and redirect to either the login page or index page
         if logged_in?

@@ -1,24 +1,8 @@
 class LogsController < ApplicationController
-    
 
-    get "/logs" do #get logs route
-        not_logged_in_helper
-        erb :'/users/account'
-    end 
-
-
-    #show all the logs
-    # get "/logs/all" do 
-    #     if logged_in?
-    #         if  session[:user_id] 
-    #             @logs = Log.all
-    #             erb :'/log/all'
-    #         else 
-    #             redirect to '/logs'
-    #         end 
-    #     else 
-    #         redirect to '/login'
-    #     end 
+    # get "/logs" do #get logs route and render the users main page
+    #     not_logged_in_helper
+    #     erb :'/users/account'
     # end 
 
     get "/logs/all" do 
