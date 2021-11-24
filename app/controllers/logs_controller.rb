@@ -23,7 +23,7 @@ class LogsController < ApplicationController
     #     end 
     # end 
 
-    get '/logs/new' do 
+    get '/logs/new' do #DONE
         not_logged_in_helper
         erb :'/log/new'
     end 

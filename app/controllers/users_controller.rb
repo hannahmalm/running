@@ -26,7 +26,6 @@ class UsersController < ApplicationController
             session[:user_id] = user.id #create the session - will only work if set up in app controller first - This is whats actually logging the user in and assigning the key/value pair to session hash
             #redirect to "/logs"
             redirect to "/users/#{user.id}" #redirect to the users homepage
-            #redirect to "/users/#{@user.id}"
         else 
             flash[:message] = "Please enter a valid Username or Password"
             redirect to "/login"
