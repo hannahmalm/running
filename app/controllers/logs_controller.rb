@@ -5,15 +5,13 @@ class LogsController < ApplicationController
     #     erb :'/users/account'
     # end 
 
-    get "/logs/all" do 
+    get "/logs/all" do #DONE
         not_logged_in_helper
         if session[:user_id]
             @logs = Log.all 
-            @user = User.find_by_id(params[:id])
+            @user = User.find_by(params[:id])
             erb :'/log/all'
-        else 
-            redirect to '/logs'
-        end 
+        end
     end 
     
     #new log -DONE

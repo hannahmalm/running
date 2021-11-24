@@ -8,7 +8,7 @@ class UsersController < ApplicationController
         user = User.new(params) #set local variable and inialize a new user by passing in the params
         if user.save #save the user only if the validations pass --> validations are on user model
             session[:user_id] = user.id #set the session equal to the user.id
-            redirect "/logs" #once signed up, redirect to the logs page
+            redirect "/users/#{user.id}"#once signed up, redirect to the logs page
         else 
             #this is a dynamic active record flash error that is standard for signup
             flash[:errors] = "Signup Failure: #{user.errors.full_messages.to_sentence}" #https://stackoverflow.com/questions/15043272/errors-full-messages-format-in-rails-3
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
         end 
     end 
 
-    get "/users/:id" do #get logs route
+    get "/users/:id" do #get logs route - DONE 
         not_logged_in_helper
         @user = User.find_by(id: params[:id])
         @logs = Log.all
@@ -45,8 +45,9 @@ class UsersController < ApplicationController
             end 
     end 
 
+    #DONE
     get "/logout" do #Logout if already logged in and redirect to either the login page or index page
-        if logged_in?
+        if logged_in? 
             session.clear
             redirect "/login"
         else 
