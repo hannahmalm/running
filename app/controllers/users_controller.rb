@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     #     end 
     # end 
 
-     post "/signup" do #local variables because not rendering ERB
+     post "/signup" do #local variables because not rendering ERB - DONE
         user = User.new(params) #set local variable and inialize a new user by passing in the params
         if user.save #save the user only if the validations pass --> validations are on user model
             session[:user_id] = user.id #set the session equal to the user.id
