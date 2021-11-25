@@ -2,7 +2,7 @@
 <h2>Your user id is: <%= current_user.id %></h2>
 
 <% @logs.each do |log| %>
-<ul><a href="/logs/<%=log.id%>">User ID: <%=log.user_id%>: </a><%=log.distance%> Miles - <%=log.pace%></ul>
+<ul><a href="/logs/<%=log.id%>"> User ID:<%=log.user_id%></a>: <%=log.distance%> Miles - <%=log.pace%></ul>
 <%end%>
 
 <br>
