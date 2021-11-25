@@ -72,3 +72,14 @@
     #         redirect to '/login'
     #     end 
     # end 
+
+
+     #show log 
+    # get '/logs/:id' do #DONE
+    #     if logged_in?
+    #         @log = Log.find_by_id(params[:id])
+    #         erb :'/log/show'
+    #     else 
+    #         redirect to '/login'
+    #     end 
+    # end 

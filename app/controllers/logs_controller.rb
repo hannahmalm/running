@@ -19,29 +19,12 @@ class LogsController < ApplicationController
         erb :'/log/new'
     end 
 
-    # post '/logs' do #DONE
-    #     if logged_in?
-    #         #@log = Log.create(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :owner_id => params[:owner_id])
-    #         @log = current_user.logs.build(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :user_id => params[:user_id])
-    #         if @log.save
-    #             redirect to "/logs"
-    #             #redirect to "/logs/#{@log.id}"
-    #         else
-    #             redirect to "/logs/new"
-    #         end
-    #     else
-    #         redirect to '/login'
-    #     end 
-    # end 
-
     post '/logs' do 
         not_logged_in_helper
         if  
             #params[:date] != "" && params[:distance] != "" && params[:pace] != "" && params[:user_id] != ""
             @log = current_user.logs.build(:date => params[:date], :distance => params[:distance], :pace => params[:pace], :avg_heart_rate => params[:avg_heart_rate], :notes => params[:notes], :user_id => params[:user_id])
             @log.save #@log.create does not work, do this workaround 
-            #redirect to "/logs/all"
-            #redirect to "/users/#{current_user.id}"
             redirect to "/logs/#{@log.id}"
         else 
             #print a flash error stating that these fields are required
